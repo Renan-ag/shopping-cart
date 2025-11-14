@@ -59,4 +59,4 @@ export const shoppingCartSlice = createSlice({
 export const { addItem, removeItem, clearCart, decrementItem } =
   shoppingCartSlice.actions;
 
-export default shoppingCartSlice.reducer;
+export const shoppingCart = shoppingCartSlice.reducer;

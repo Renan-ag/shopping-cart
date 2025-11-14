@@ -1,11 +1,15 @@
-import MainContent from "./components/main-content";
-import MainHeader from "./components/main-header";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./store";
+import { Toaster } from "sonner";
+import ProductListPage from "./pages/product-list";
 
 function App() {
   return (
     <>
-      <MainHeader />
-      <MainContent />
+      <ReduxProvider store={store}>
+        <Toaster position="bottom-right" closeButton />
+        <ProductListPage />
+      </ReduxProvider>
     </>
   );
 }

@@ -1,28 +1,55 @@
+import { useState, useEffect } from "react";
 import Text from "../text";
 import CartButton from "../cart-button";
-// import { useState } from "react";
 import Container from "../container";
+import { useAppSelector } from "../../store";
 
 export default function MainHeader() {
-  // const [test, setTest] = useState(0);
-  return (
-    <header className="px-4 py-2 shadow-md">
-      <Container className="flex items-center justify-between">
-        <Text as="h1" variant="heading-large">
-          Shopping Cart
-        </Text>
+  const shoppingCart = useAppSelector((state) => state.shoppingCart);
+  const [scrolled, setScrolled] = useState(false);
 
-        <div>
-          <CartButton
-            variant="ghost"
-            quantity={0}
-            onClick={() => {
-              console.log("Cart icon click event.");
-            }}
-          />
-          {/*<button onClick={() => setTest(test + 1)}>Add Item</button>*/}
-        </div>
-      </Container>
-    </header>
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <>
+      <header
+        className={`
+          fixed top-0 left-0 right-0 z-50 transition-all duration-300
+          border-b border-solid border-gray-300
+          ${
+            scrolled
+              ? "bg-background/90 backdrop-blur-sm shadow-lg h-16"
+              : "h-16"
+          }
+        `}
+      >
+        <Container className="flex items-center justify-between h-full px-4 py-2">
+          <Text as="h1" variant="heading-medium">
+            Shopping Cart
+          </Text>
+
+          <div>
+            <CartButton
+              variant="ghost"
+              quantity={shoppingCart.totalQuantity}
+              onClick={() => {
+                console.log("Cart icon click event.");
+              }}
+            />
+          </div>
+        </Container>
+      </header>
+
+      {/* Espaço para compensar o header fixo */}
+      <div className="h-16" />
+    </>
   );
 }

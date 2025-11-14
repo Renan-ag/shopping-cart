@@ -4,9 +4,11 @@ import {
   useSelector,
   type TypedUseSelectorHook,
 } from "react-redux";
+import { shoppingCart } from "./slices/shopping-cart";
+import { product } from "./slices/products";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { shoppingCart, product },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

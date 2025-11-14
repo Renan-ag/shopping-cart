@@ -1,32 +1,10 @@
-import ProductCard from "../../contexts/products/components/product-card";
+import ProductList from "../../contexts/products/components/product-list";
 import Container from "../container";
-import Text from "../text";
 
 export default function MainContent() {
   return (
-    <Container as="main" className="mt-8">
-      <div>
-        <Text as="h2" variant="heading-medium">
-          Lista de produtos
-        </Text>
-      </div>
-      <div>
-        <ProductCard
-          product={{
-            id: 1,
-            title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-            price: 109.95,
-            description:
-              "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-            category: "men's clothing",
-            image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-            rating: {
-              rate: 3.9,
-              count: 120,
-            },
-          }}
-        />
-      </div>
+    <Container as="main" className="mt-4">
+      <ProductList />
     </Container>
   );
 }

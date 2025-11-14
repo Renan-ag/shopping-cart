@@ -5,6 +5,7 @@ interface TextProps extends textVariantsProps {
   as?: keyof React.JSX.IntrinsicElements;
   className?: string;
   children?: React.ReactNode;
+  title?: string;
 }
 
 export default function Text({
