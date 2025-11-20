@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import Text from "../text";
 import CartButton from "../cart-button";
 import Container from "../container";
-import { useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { handleSidebar } from "../../store/slices/sidebar";
 
 export default function MainHeader() {
+  const dispatch = useAppDispatch();
   const shoppingCart = useAppSelector((state) => state.shoppingCart);
   const [scrolled, setScrolled] = useState(false);
 
@@ -41,7 +43,7 @@ export default function MainHeader() {
               variant="ghost"
               quantity={shoppingCart.totalQuantity}
               onClick={() => {
-                console.log("Cart icon click event.");
+                dispatch(handleSidebar("open"));
               }}
             />
           </div>

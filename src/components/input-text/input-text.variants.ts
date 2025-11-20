@@ -12,6 +12,7 @@ export const inputTextWrapperVariants = tv({
   variants: {
     size: {
       md: "h-12 p-4",
+      sm: "h-8 p-2",
     },
     disabled: {
       true: "pointer-events-none opacity-70",
@@ -24,7 +25,7 @@ export const inputTextWrapperVariants = tv({
 });
 
 export const inputTextVariants = tv({
-  base: "outline-none bg-transparent placeholder:text-gray-200 text-gray-100 font-sans flex-1",
+  base: "outline-none bg-transparent placeholder:text-gray-500 text-title-color font-sans flex-1",
 });
 
 export type inputTextWrapperVariantsProps = VariantProps<

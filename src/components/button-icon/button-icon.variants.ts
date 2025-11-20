@@ -6,6 +6,7 @@ export const buttonIconVariants = tv({
     variant: {
       primary: "bg-primary hover:bg-primary/60",
       ghost: "bg-transparent hover:bg-primary/15",
+      danger: "bg-red-600 hover:bg-red-500",
     },
     disabled: {
       true: "pointer-events-none opacity-50",
@@ -30,6 +31,7 @@ export const buttonIconIconVariants = tv({
   variants: {
     variant: {
       primary: "fill-white",
+      danger: "fill-white",
       ghost: "fill-primary",
     },
     size: {

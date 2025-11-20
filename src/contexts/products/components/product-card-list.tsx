@@ -4,7 +4,7 @@ import { addItem } from "../../../store/slices/shopping-cart";
 import type { Product } from "../models/product";
 import ProductCard from "./product-card";
 
-export default function ProductList() {
+export default function ProductCardList() {
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state.product);
 
