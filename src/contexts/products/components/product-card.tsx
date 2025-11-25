@@ -9,11 +9,13 @@ import PlusCircleIcon from "../../../assets/icons/PlusCircle.svg?react";
 interface ProductCardProps {
   product: Product;
   onAddToCart?: (product: Product) => void;
+  disabled?: boolean;
 }
 
 export default function ProductCard({
   product,
   onAddToCart,
+  disabled = false,
 }: ProductCardProps) {
   const { title, price, rating, image } = product;
 
@@ -51,14 +53,21 @@ export default function ProductCard({
             type="button"
             aria-label="Add to cart"
             size="sm"
+            disabled={disabled}
             className="mt-2 flex justify-center items-center"
             onClick={() => {
               onAddToCart(product);
             }}
           >
             <span className="flex items-center gap-1.5 mx-auto">
-              <Icon className="w-5.5 fill-white" svg={PlusCircleIcon} /> Add to
-              Cart
+              {disabled ? (
+                "In Cart"
+              ) : (
+                <>
+                  <Icon className="w-5.5 fill-white" svg={PlusCircleIcon} /> Add
+                  to Cart
+                </>
+              )}
             </span>
           </Button>
         )}

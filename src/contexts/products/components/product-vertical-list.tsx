@@ -1,9 +1,7 @@
-import ButtonIcon from "../../../components/button-icon";
-import InputText from "../../../components/input-text";
 import Text from "../../../components/text";
 import type { ShoppingCartItem } from "../../../store/slices/shopping-cart";
 
-import TrashIcon from "../../../assets/icons/Trash.svg?react";
+import QuantityInput from "../../../components/quantity-input";
 
 interface ProductVerticalListProps {
   products: ShoppingCartItem[];
@@ -18,9 +16,16 @@ export default function ProductVerticalList({
 }: ProductVerticalListProps) {
   return (
     <>
-      {products.map((product) => (
-        <div className="flex gap-4" key={`product-vertical-list-${product.id}`}>
-          <img className="h-20" src={product.image} alt={product.title} />
+      {products.map((product, index) => (
+        <div
+          className={`flex gap-4 ${index !== products.length - 1 ? "border-b" : ""} py-2 border-solid border-primary/20`}
+          key={`product-vertical-list-${product.id}`}
+        >
+          <img
+            className="w-20 h-20 object-contain"
+            src={product.image}
+            alt={product.title}
+          />
           <div className="flex-1">
             <Text
               as="h3"
@@ -39,31 +44,26 @@ export default function ProductVerticalList({
               </Text>
 
               <div className="flex justify-end gap-2 mt-2">
-                <div className="max-w-20">
-                  <InputText
-                    size="sm"
-                    type="number"
-                    onChange={(element) =>
-                      handleQuantityChange(
-                        product.id,
-                        parseInt(element.target.value),
-                      )
-                    }
-                    defaultValue={product.quantity}
-                  />
-                </div>
-
-                <ButtonIcon
-                  onClick={() => handleRemoveProduct(product.id)}
-                  variant="danger"
-                  size="sm"
-                  svg={TrashIcon}
+                <QuantityInput
+                  quantity={product.quantity}
+                  onChange={(quantity) =>
+                    handleQuantityChange(product.id, quantity)
+                  }
+                  onRemove={() => handleRemoveProduct(product.id)}
                 />
               </div>
             </div>
           </div>
         </div>
       ))}
+
+      {products.length === 0 && (
+        <div className="flex justify-center items-center h-full">
+          <Text as="p" variant="paragraph-medium" className="text-center">
+            Your shopping cart is empty.
+          </Text>
+        </div>
+      )}
     </>
   );
 }

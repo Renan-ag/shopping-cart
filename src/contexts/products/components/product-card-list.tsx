@@ -1,15 +1,16 @@
 import { toast } from "sonner";
 import { useAppDispatch, useAppSelector } from "../../../store";
-import { addItem } from "../../../store/slices/shopping-cart";
+import { addCartItem } from "../../../store/slices/shopping-cart";
 import type { Product } from "../models/product";
 import ProductCard from "./product-card";
 
 export default function ProductCardList() {
   const dispatch = useAppDispatch();
+  const shoppingCart = useAppSelector((state) => state.shoppingCart);
   const product = useAppSelector((state) => state.product);
 
   const handleAddToCart = (product: Product) => {
-    dispatch(addItem(product));
+    dispatch(addCartItem(product));
     toast.message(`Added ${product.title} to cart`);
   };
 
@@ -23,6 +24,7 @@ export default function ProductCardList() {
             onAddToCart={() => {
               handleAddToCart(product);
             }}
+            disabled={shoppingCart.items.some((item) => item.id === product.id)}
           />
         ))}
     </div>

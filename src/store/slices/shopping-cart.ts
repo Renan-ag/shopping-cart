@@ -8,18 +8,20 @@ export interface ShoppingCartItem extends Product {
 export interface ShoppingCartState {
   items: ShoppingCartItem[];
   totalQuantity: number;
+  totalPrice: number;
 }
 
 const initialState: ShoppingCartState = {
   items: [],
   totalQuantity: 0,
+  totalPrice: 0,
 };
 
 export const shoppingCartSlice = createSlice({
   name: "shoppingCart",
   initialState,
   reducers: {
-    addItem(state, action: PayloadAction<Product>) {
+    addCartItem(state, action: PayloadAction<Product>) {
       const item = state.items.find((i) => i.id === action.payload.id);
 
       if (item) {
@@ -29,34 +31,46 @@ export const shoppingCartSlice = createSlice({
       }
 
       state.totalQuantity += 1;
+      state.totalPrice += action.payload.price;
     },
-    removeItem(state, action: PayloadAction<number>) {
+    removeCartItem(state, action: PayloadAction<number>) {
       const id = action.payload;
       const removedItem = state.items.find((item) => item.id === id);
 
       if (removedItem) {
         state.items = state.items.filter((item) => item.id !== id);
         state.totalQuantity -= removedItem.quantity;
+        state.totalPrice -= removedItem.price * removedItem.quantity;
       }
     },
     clearCart(state) {
       state.items = [];
       state.totalQuantity = 0;
+      state.totalPrice = 0;
     },
-    decrementItem(state, action: PayloadAction<number>) {
-      const id = action.payload;
-      const item = state.items.find((item) => item.id === id);
+    updateCartItemQuantity(
+      state,
+      action: PayloadAction<{ productId: number; quantity: number }>,
+    ) {
+      const { productId, quantity } = action.payload;
+      const item = state.items.find((item) => item.id === productId);
 
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
+      if (item) {
+        const previousQuantity = item.quantity;
+        item.quantity = quantity;
+
+        state.totalQuantity += quantity - previousQuantity;
+        state.totalPrice += (quantity - previousQuantity) * item.price;
       }
-
-      if (state.totalQuantity > 0) state.totalQuantity -= 1;
     },
   },
 });
 
-export const { addItem, removeItem, clearCart, decrementItem } =
-  shoppingCartSlice.actions;
+export const {
+  addCartItem,
+  removeCartItem,
+  clearCart,
+  updateCartItemQuantity,
+} = shoppingCartSlice.actions;
 
 export const shoppingCart = shoppingCartSlice.reducer;
