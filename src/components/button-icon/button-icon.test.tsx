@@ -16,7 +16,7 @@ describe("Button Icon component", () => {
     render(<ButtonIcon svg={MockIcon} />);
 
     const buttonElement = screen.getByRole("button");
-    const iconElement = screen.getByTestId("icon");
+    const iconElement = screen.getByTestId("mock-svg");
 
     expect(buttonElement).toBeInTheDocument();
     expect(iconElement).toBeInTheDocument();

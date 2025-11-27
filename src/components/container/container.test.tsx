@@ -17,7 +17,7 @@ describe("Container component", () => {
 
   it("should apply the custom className", () => {
     render(<Container className="custom-class">Test</Container>);
-    const textElement = screen.getByText(/hello world/i);
-    expect(textElement).toHaveClass("custom-class");
+    const containerElement = screen.getByText(/Test/i);
+    expect(containerElement).toHaveClass("custom-class");
   });
 });

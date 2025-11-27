@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.10.1",
