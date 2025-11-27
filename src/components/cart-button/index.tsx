@@ -1,5 +1,5 @@
 import Icon from "../icon";
-import CartIcon from "../../assets/icons/Cart.svg?react";
+import CartIcon from "./Cart.svg?react";
 import {
   buttonIconVariants,
   type buttonIconVariantsProps,
@@ -44,6 +44,7 @@ export default function CartButton({
         buttonIconVariants({ className, variant, size, disabled }),
         "relative",
       )}
+      disabled={disabled}
       {...props}
     >
       <Icon className="w-7 h-7" svg={CartIcon} />

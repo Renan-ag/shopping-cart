@@ -31,6 +31,7 @@ export default function ButtonIcon({
         variant,
         size,
       })}
+      disabled={disabled}
       {...props}
     >
       <Icon

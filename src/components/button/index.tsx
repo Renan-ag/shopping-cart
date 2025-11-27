@@ -29,6 +29,7 @@ export default function Button({
         variant,
         disabled,
       })}
+      disabled={disabled}
       type={type}
       {...props}
     >
