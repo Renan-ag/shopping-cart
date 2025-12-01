@@ -50,8 +50,12 @@ export const ShoppingCartSidebarContent = ({
       </main>
 
       <footer className="flex flex-col items-center mt-6">
-        <Text variant="label-medium" as="h2" className="text-title-color mb-1">
-          Total: ${shoppingCartState.totalPrice.toFixed(2)}
+        <Text variant="label-medium" as="h2" className="text-title-color mb-2">
+          Total:
+          {shoppingCartState.totalPrice.toLocaleString("en-US", {
+            currency: "USD",
+            style: "currency",
+          })}
         </Text>
 
         <Button
