@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de um carrinho de compras utilizando **React**, **Redux Toolkit**, **TypeScript**, **Vite** e **TailwindCSS**. A aplicação é uma SPA (Single Page Application) e utiliza os conceitos de gerenciamento de estado com Redux e roteamento com React Router.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto utiliza as seguintes tecnologias:
 
-## React Compiler
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Redux Toolkit**: Ferramenta para gerenciamento de estado global.
+- **React Router**: Biblioteca de roteamento para React.
+- **TypeScript**: Superset do JavaScript para adicionar tipagem estática.
+- **Vite**: Ferramenta de build e desenvolvimento de aplicações front-end.
+- **Tailwind CSS**: Framework CSS para construção rápida de interfaces customizáveis.
+- **Vitest**: Framework de testes para React.
+- **Sonner**: Notificações para interfaces de usuário.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚙️ Dependências
 
-## Expanding the ESLint configuration
+As principais dependências do projeto são:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **@reduxjs/toolkit**: ^2.10.1
+- **axios**: ^1.13.2
+- **react-redux**: ^9.2.0
+- **react-router-dom**: ^7.9.5
+- **sonner**: ^2.0.7
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 DevDependencies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+As principais dependências de desenvolvimento são:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **vite**: ^7.2.2
+- **@vitejs/plugin-react**: ^5.1.0
+- **eslint**: ^9.39.1
+- **vitest**: ^4.0.14
+- **tailwindcss**: ^4.1.17
+- **typescript**: ~5.9.3
+- **@tailwindcss/vite**: ^4.1.17
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠 Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Aqui estão os scripts disponíveis para uso durante o desenvolvimento:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `dev`: Inicia o ambiente de desenvolvimento com Vite.  
+  ```bash
+  npm run dev
+build: Compila o código TypeScript e cria o build de produção com Vite.
+
+bash
+Copiar código
+npm run build
+lint: Roda o ESLint para verificar a qualidade do código.
+
+bash
+Copiar código
+npm run lint
+preview: Preview da aplicação de produção com Vite.
+
+bash
+Copiar código
+npm run preview
+test: Roda os testes com Vitest.
+
+bash
+Copiar código
+npm run test
+test:ui: Abre a interface gráfica para rodar os testes com Vitest.
+
+bash
+Copiar código
+npm run test:ui
+🛠️ Como rodar o projeto
+Clone o repositório:
+
+bash
+Copiar código
+git clone https://github.com/seu-usuario/shopping-cart.git
+cd shopping-cart
+Instale as dependências:
+
+bash
+Copiar código
+npm install
+Inicie o ambiente de desenvolvimento:
+
+bash
+Copiar código
+npm run dev
+O projeto estará disponível em http://localhost:3000.
+
+🧪 Testes
+O projeto utiliza Vitest para testes unitários e de integração. Para rodar os testes, utilize o seguinte comando:
+
+bash
+Copiar código
+npm run test
+Para rodar os testes com a interface gráfica:
+
+bash
+Copiar código
+npm run test:ui
+
+📄 Licença
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+Feito com ❤️ por Renan Andrade
