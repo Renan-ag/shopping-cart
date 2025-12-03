@@ -21,7 +21,7 @@ export default function ProductCard({
   loading = false,
 }: ProductCardProps) {
   return (
-    <div className="px-6 py-4 shadow border border-solid border-gray-300 rounded-lg max-w-72">
+    <div className="w-full px-6 py-4 shadow border border-solid border-gray-300 rounded-lg max-w-72">
       {loading && !product ? (
         <>
           <div className="flex flex-col gap-6">

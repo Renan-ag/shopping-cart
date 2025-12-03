@@ -17,7 +17,7 @@ export default function ProductCardList() {
 
   return (
     <>
-      <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid gap-4 justify-items-center grid-cols-1 min-[424px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         {product.isLoading &&
           Array.from({ length: 10 }).map((_, index) => (
             <ProductCard
