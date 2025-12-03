@@ -62,6 +62,7 @@ describe("productSlice", () => {
     expect(store.getState().product).toEqual({
       products: [],
       isLoading: false,
+      error: null,
     });
   });
 
@@ -84,6 +85,7 @@ describe("productSlice", () => {
       expect(result.payload).toEqual(mockProducts);
 
       expect(store.getState().product).toEqual({
+        error: null,
         products: mockProducts,
         isLoading: false,
       });
@@ -98,7 +100,7 @@ describe("productSlice", () => {
       expect(store.getState().product.isLoading).toBe(true);
     });
 
-    it("Should 'rejected' stop loading", async () => {
+    it("Should 'rejected' stop loading and set an error message", async () => {
       const axiosError = {
         isAxiosError: true,
         message: "Request failed with status code 500",
@@ -111,9 +113,11 @@ describe("productSlice", () => {
       const result = await store.dispatch(loadProducts());
 
       expect(result.type).toBe("products/load/rejected");
-      // expect(result.type).toContain("Request failed");
 
       expect(store.getState().product).toEqual({
+        error: {
+          message: expect.any(String),
+        },
         products: [],
         isLoading: false,
       });
@@ -123,7 +127,7 @@ describe("productSlice", () => {
   describe("extraReducers", () => {
     it("pending → 'isLoading' is true", () => {
       const state = product(
-        { products: mockProducts, isLoading: false },
+        { products: mockProducts, isLoading: false, error: null },
         loadProducts.pending("", undefined),
       );
       expect(state.isLoading).toBe(true);
@@ -132,10 +136,11 @@ describe("productSlice", () => {
 
     it("fulfilled → update the products and 'isLoading' is false", () => {
       const state = product(
-        { products: [], isLoading: true },
+        { products: [], isLoading: true, error: null },
         loadProducts.fulfilled(mockProducts, "", undefined),
       );
       expect(state).toEqual({
+        error: null,
         products: mockProducts,
         isLoading: false,
       });

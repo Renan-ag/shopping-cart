@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../../store";
 import { addCartItem } from "../../../store/slices/shopping-cart";
 import type { Product } from "../models/product";
 import ProductCard from "./product-card";
+import Text from "../../../components/text";
 
 export default function ProductCardList() {
   const dispatch = useAppDispatch();
@@ -15,28 +16,39 @@ export default function ProductCardList() {
   };
 
   return (
-    <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-      {product.isLoading &&
-        Array.from({ length: 10 }).map((_, index) => (
-          <ProductCard
-            key={`product-card-${index}`}
-            onAddToCart={() => {}}
-            disabled={false}
-            loading={true}
-          />
-        ))}
+    <>
+      <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        {product.isLoading &&
+          Array.from({ length: 10 }).map((_, index) => (
+            <ProductCard
+              key={`product-card-${index}`}
+              onAddToCart={() => {}}
+              disabled={false}
+              loading={true}
+            />
+          ))}
 
-      {product.products &&
-        product.products.map((product) => (
-          <ProductCard
-            key={`product-card-${product.id}`}
-            product={product}
-            onAddToCart={() => {
-              handleAddToCart(product);
-            }}
-            disabled={shoppingCart.items.some((item) => item.id === product.id)}
-          />
-        ))}
-    </div>
+        {product.products &&
+          product.products.map((product) => (
+            <ProductCard
+              key={`product-card-${product.id}`}
+              product={product}
+              onAddToCart={() => {
+                handleAddToCart(product);
+              }}
+              disabled={shoppingCart.items.some(
+                (item) => item.id === product.id,
+              )}
+            />
+          ))}
+      </div>
+      {product.error && (
+        <div className="w-full text-center">
+          <Text variant="heading-medium" className="text-red-500">
+            {product.error.message}
+          </Text>
+        </div>
+      )}
+    </>
   );
 }
