@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../helpers/api";
 import type { Product } from "../../contexts/products/models/product";
 
-interface ProductState {
+export interface ProductState {
   products: Product[];
   isLoading: boolean;
 }
@@ -28,6 +28,16 @@ export const productSlice = createSlice({
     });
     builder.addCase(loadProducts.pending, (state) => {
       state.isLoading = true;
+    });
+    builder.addCase(loadProducts.rejected, (state, action) => {
+      state.products = [];
+      state.isLoading = false;
+
+      if (action.payload) {
+        console.error("Erro conhecido:", action.payload);
+      } else {
+        console.error("Erro inesperado:", action.error.message);
+      }
     });
   },
 });

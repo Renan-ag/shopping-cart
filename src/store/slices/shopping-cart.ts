@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Product } from "../../contexts/products/models/product";
+import { roundPrice } from "../../helpers/utils";
 
 export interface ShoppingCartItem extends Product {
   quantity: number;
@@ -31,7 +32,7 @@ export const shoppingCartSlice = createSlice({
       }
 
       state.totalQuantity += 1;
-      state.totalPrice += action.payload.price;
+      state.totalPrice = roundPrice(state.totalPrice + action.payload.price);
     },
     removeCartItem(state, action: PayloadAction<number>) {
       const id = action.payload;
@@ -40,7 +41,9 @@ export const shoppingCartSlice = createSlice({
       if (removedItem) {
         state.items = state.items.filter((item) => item.id !== id);
         state.totalQuantity -= removedItem.quantity;
-        state.totalPrice -= removedItem.price * removedItem.quantity;
+        state.totalPrice = roundPrice(
+          state.totalPrice - removedItem.price * removedItem.quantity,
+        );
       }
     },
     clearCart(state) {
@@ -60,7 +63,8 @@ export const shoppingCartSlice = createSlice({
         item.quantity = quantity;
 
         state.totalQuantity += quantity - previousQuantity;
-        state.totalPrice += (quantity - previousQuantity) * item.price;
+        const diff = quantity - previousQuantity;
+        state.totalPrice = roundPrice(state.totalPrice + diff * item.price);
       }
     },
   },

@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface SidebarState {
+export interface SidebarState {
   isOpen: boolean;
 }
 
@@ -12,10 +12,10 @@ export const sidebarSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    handleSidebar(state, action: PayloadAction<"open" | "close">) {
-      if (action.payload === "open") {
+    handleSidebar(state, action: PayloadAction<"open" | "close" | undefined>) {
+      if (action?.payload === "open") {
         state.isOpen = true;
-      } else if (action.payload === "close") {
+      } else if (action?.payload === "close") {
         state.isOpen = false;
       } else {
         state.isOpen = !state.isOpen;
