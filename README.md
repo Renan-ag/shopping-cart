@@ -80,8 +80,8 @@ npm run test:ui   # Interface visual de testes
 
 O projeto utiliza:
 
--   Vitest\
--   Testing Library\
+-   Vitest
+-   Testing Library
 -   jsdom
 
 Execute:
@@ -89,21 +89,3 @@ Execute:
 ``` bash
 npm run test
 ```
-
-------------------------------------------------------------------------
-
-## 🗂 Estrutura do projeto (resumo)
-
-    src/
-     ├── components/
-     ├── pages/
-     ├── store/
-     ├── routes/
-     ├── services/
-     └── App.tsx
-
-------------------------------------------------------------------------
-
-## 📄 Licença
-
-Este projeto está sob a licença **MIT**.
