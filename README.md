@@ -1,22 +1,22 @@
 # 🛒 Shopping Cart --- Frontend
 
 Este é um projeto de **carrinho de compras** desenvolvido para compor
-meu portfólio.\
+meu portfólio.
 O foco deste projeto é demonstrar habilidades com **React**,
-**TypeScript**, **Redux Toolkit**, **React Router**, **Tailwind CSS** e
+**TypeScript**, **Redux Toolkit**, **Tailwind CSS** e
 testes utilizando **Vitest**.
 
 ------------------------------------------------------------------------
 
 ## ✨ Funcionalidades
 
--   🛍 Listagem de produtos\
--   ➕ Adicionar e remover itens do carrinho\
--   🔄 Atualização automática de quantidades e total\
--   🚦 Navegação entre páginas com React Router\
--   🧠 Gerenciamento global de estado com Redux Toolkit\
--   🔔 Notificações utilizando Sonner\
--   📱 Layout responsivo com Tailwind CSS\
+-   🛍 Listagem de produtos
+-   ➕ Adicionar e remover itens do carrinho
+-   🔄 Atualização automática de quantidades e total
+-   🚦 Navegação entre páginas com React Router
+-   🧠 Gerenciamento global de estado com Redux Toolkit
+-   🔔 Notificações utilizando Sonner
+-   📱 Layout responsivo com Tailwind CSS
 -   🧪 Testes com Vitest + Testing Library
 
 ------------------------------------------------------------------------
@@ -39,10 +39,10 @@ testes utilizando **Vitest**.
 
 ## ⚙️ Pré-requisitos
 
--   Node.js\
+-   Node.js
 -   npm
 
-> **Antes de rodar o projeto, renomeie o arquivo:**\
+> **Antes de rodar o projeto, renomeie o arquivo:**
 > `.env.example` ➝ `.env`
 
 ------------------------------------------------------------------------
